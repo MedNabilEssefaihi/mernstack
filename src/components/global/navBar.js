@@ -6,18 +6,34 @@ const NavBar = () => {
   return (
     <div className="navBar-container">
       <Navbar bg="primary" variant="dark" fixed="top">
-        <Navbar.Brand href="#home">Sara Projet</Navbar.Brand>
+        <Navbar.Brand href="/">Sara Projet</Navbar.Brand>
         <Nav className="mr-auto">
           <NavDropdown title="Utilisateur" id="basic-nav-dropdown">
             <NavDropdown.Item href="/users">
               Liste des utilisateurs
             </NavDropdown.Item>
-            <NavDropdown.Item href="users/add">
+            <NavDropdown.Item href="/users/add">
               Ajouter un utilisateur
             </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link href="/clients">Clients</Nav.Link>
-          <Nav.Link href="/rapports">Rapports</Nav.Link>
+
+          <NavDropdown title="Clients" id="basic-nav-dropdown">
+            <NavDropdown.Item href="/clients">
+              Liste des clients
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/clients/add">
+              Ajouter un client
+            </NavDropdown.Item>
+          </NavDropdown>
+
+          <NavDropdown title="Rapports" id="basic-nav-dropdown">
+            <NavDropdown.Item href="/rapports">
+              Liste des rapports
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/rapports/add">
+              Ajouter un rapport
+            </NavDropdown.Item>
+          </NavDropdown>
         </Nav>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>

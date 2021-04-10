@@ -15,7 +15,7 @@ const ListUsers = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/")
+      .get("http://localhost:5000/users")
       .then((result) => {
         if (result.data.length) {
           setUsers(result.data);
@@ -33,7 +33,7 @@ const ListUsers = () => {
       .then(() => console.log("user has been deleted"))
       .catch((err) => console.log(err.message));
     // update state
-    setUsers(users.filter((user) => user._id != id));
+    setUsers(users.filter((user) => user._id !== id));
     handleVisible();
   };
 
@@ -44,7 +44,7 @@ const ListUsers = () => {
       let { _id, nom, prenom, email, type } = user;
       let data = users.filter((user) => user._id === _id);
       return (
-        <tr>
+        <tr key={_id}>
           <td>{nom}</td>
           <td>{prenom}</td>
           <td>{email}</td>
@@ -94,7 +94,6 @@ const ListUsers = () => {
 
   return (
     <div>
-      <Link to="users/add">add user</Link>
       <h3>Logged Exercises</h3>
       <br />
       {showAlter ? (

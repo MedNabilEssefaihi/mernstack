@@ -1,4 +1,3 @@
-/* path /add */
 import React, { useState } from "react";
 // package
 const axios = require("axios");
@@ -35,7 +34,7 @@ const AddUser = () => {
 
   return (
     <div className="addUser-form-container">
-      <h2>Ajouter un nouvel utilisateur</h2>
+      <h2>Ajouter un nouveau rapport</h2>
       <form onSubmit={OnSubmit}>
         {/* projet */}
         <div className="form-group">
@@ -104,7 +103,7 @@ const AddUser = () => {
         <div className="form-group">
           <label>Départ (Kilométre): </label>
           <input
-            type="password"
+            type="number"
             required
             minlength="8"
             className="form-control"
@@ -118,7 +117,7 @@ const AddUser = () => {
         <div className="form-group">
           <label>Retour (Kilométre): </label>
           <input
-            type="password"
+            type="number"
             required
             minlength="8"
             className="form-control"
@@ -136,9 +135,12 @@ const AddUser = () => {
             type="text"
             // style={{ height: "142px" }}
             className="form-control"
-            value={rapportInfo.kilo_retour}
+            value={rapportInfo.tache_effectuee}
             onChange={(e) => {
-              setRapportInfo({ ...rapportInfo, kilo_retour: e.target.value });
+              setRapportInfo({
+                ...rapportInfo,
+                tache_effectuee: e.target.value,
+              });
             }}
           />
         </div>

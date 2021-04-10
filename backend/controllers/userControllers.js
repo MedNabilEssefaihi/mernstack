@@ -11,7 +11,7 @@ const getUsers = (req, res) => {
 };
 
 const getAddPage = (req, res) => {
-  res.json("user page!");
+  // fs.readFile(path.resolve('..'))
 };
 
 const postAddUser = (req, res) => {

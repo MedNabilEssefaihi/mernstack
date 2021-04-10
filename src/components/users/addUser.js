@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 //package
 import axios from "axios";
+const generator = require("generate-password");
 
 const AddUser = () => {
   const [userInfo, setUserInfo] = useState({
@@ -20,8 +21,18 @@ const AddUser = () => {
   const OnSubmit = (event) => {
     event.preventDefault();
     // send data to back-end
+
+    // create random password
+    let password = generator.generate({
+      length: 10,
+      numbers: true,
+    });
+
     axios
-      .post("http://localhost:5000/users/add", userInfo)
+      .post("http://localhost:5000/users/add", {
+        ...userInfo,
+        password,
+      })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
 
@@ -90,24 +101,6 @@ const AddUser = () => {
             value={userInfo.email}
             onChange={(e) => {
               setUserInfo({ ...userInfo, email: e.target.value });
-            }}
-          />
-        </div>
-
-        {/* password */}
-        <div className="form-group">
-          <label>Mot de passe: </label>
-          <input
-            type="password"
-            required
-            minlength="8"
-            className="form-control"
-            value={userInfo.password}
-            onChange={(e) => {
-              setUserInfo({
-                ...userInfo,
-                password: e.target.value,
-              });
             }}
           />
         </div>

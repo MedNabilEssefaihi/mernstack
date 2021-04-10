@@ -3,7 +3,7 @@ const router = express.Router();
 //controllers
 const {
   getUsers,
-  // getAddPage,
+  getAddPage,
   postAddUser,
   getUserById,
   updateUserById,
@@ -12,7 +12,7 @@ const {
 
 router.get("/", getUsers);
 //Add user
-// router.get("/add", getAddPage);
+router.get("/add", getAddPage);
 router.post("/add", postAddUser);
 //User by ID
 router.get("/:id", getUserById);

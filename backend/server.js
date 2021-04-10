@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const usersRouter = require("./routes/users");
 const clientsRouter = require("./routes/clients");
 const rapportRouter = require("./routes/rapports");
+const authRouter = require("./routes/auth");
 
 require("dotenv").config();
 
@@ -20,16 +21,16 @@ app.use(express.json());
 const bdURI = process.env.ATLAS_URI;
 
 mongoose
-  .connect(bdURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(bdURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => app.listen(port))
   .catch((err) => console.log(err.message));
 
-//redirect
-app.get("/", (req, res) => {
-  res.redirect("/users");
-});
-
 //request
+app.use(authRouter);
 app.use("/users", usersRouter);
 app.use("/clients", clientsRouter);
 app.use("/rapports", rapportRouter);
